@@ -1,0 +1,30 @@
+import { OpenAIApi, Configuration } from "openai-edge";
+
+const config = new Configuration({
+  apiKey: process.env.OPENAI_API_KEY,
+});
+
+const openai = new OpenAIApi(config);
+
+export async function getEmbeddings(text: string) {
+  console.log("start embd")
+  try {
+    if ((text.replace(/\n/g, " ")) == '') {
+      return []
+    }
+    const response = await openai.createEmbedding({
+      model: "text-embedding-ada-002",
+      input: text.replace(/\n/g, " "),
+    });
+    const result = await response.json();
+    console.log("API response:", result);
+    if (!result.data || result.data.length == 0) {
+      console.log("No embeddings returned or incorrect data structure.");
+      return [];
+    }
+    return result.data[0].embedding as number[];
+  } catch (error) {
+    console.log("error calling openai embeddings api", error);
+    throw error;
+  }
+}
