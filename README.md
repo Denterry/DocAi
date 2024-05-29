@@ -2,21 +2,22 @@
 SaaS Platform for chatting with your documents using Artificial Intelligence
 
 # Technologies and Frameworks
-Next.js
-React
-TypeScript
-Tailwind CSS
-VK CLOUD API
-Clerk
-Drizzle ORM
-PostgreSQL (inside of Neon)
-AWS SDK
-OpenAI API
-Axios
-Pinecone
-Drizzle-kit
-OpenAI Edge
-Neon Database Serverless
+- Next.js
+- React
+- TypeScript
+- Tailwind CSS
+- VK CLOUD API
+- Clerk
+- Drizzle ORM
+- PostgreSQL (inside of Neon)
+- AWS SDK
+- OpenAI API
+- Axios
+- Pinecone
+- Drizzle-kit
+- OpenAI Edge
+
+- Neon Database Serverless
 
 # How to set up locally
 ```bash
