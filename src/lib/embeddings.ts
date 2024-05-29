@@ -7,7 +7,6 @@ const config = new Configuration({
 const openai = new OpenAIApi(config);
 
 export async function getEmbeddings(text: string) {
-  console.log("start embd")
   try {
     if ((text.replace(/\n/g, " ")) == '') {
       return []

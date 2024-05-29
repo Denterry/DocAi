@@ -2,6 +2,7 @@
 import { authMiddleware, clerkMiddleware, createRouteMatcher } from "@clerk/nextjs/server";
 
 const isProtectedRoute = createRouteMatcher([
+  '/'
 ]);
 
 // Помощник clerkMiddleware включает аутентификацию и позволяет настраивать защищенные маршруты

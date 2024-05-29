@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import Metadata from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
@@ -19,8 +19,10 @@ export default function RootLayout({
   return (
     <ClerkProvider>
       <Providers>
-        <html lang="en">
-          <body className={inter.className}>{children}</body>
+        <html lang="ru" className="light">
+          <body className={inter.className}>
+            {children}
+          </body>
           <Toaster/>
         </html>
       </Providers>
