@@ -1,5 +1,5 @@
 // Этот код будет запускать перед началом выполнения каждой ручки(эндпоинта) моего сервиса
-import { authMiddleware, clerkMiddleware, createRouteMatcher } from "@clerk/nextjs/server";
+import { clerkMiddleware, createRouteMatcher } from "@clerk/nextjs/server";
 
 const isProtectedRoute = createRouteMatcher([
 ]);

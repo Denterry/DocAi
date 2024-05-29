@@ -30,7 +30,6 @@ export async function POST(req: Request, res: Response) {
       .returning({
         insertedId: chats.id,
       });
-    console.log("we are here at route of creating chat")
     return NextResponse.json(
       {
         chat_id: chat_id[0].insertedId,

@@ -23,20 +23,16 @@ export async function uploadToVk(file: File) {
             Body: file,
             ACL: 'public-read'
         }
-        console.log('we are here')
+
         const upload = s3.putObject(params).on('httpUploadProgress', evt => {
             console.log('uploading to s3...', parseInt(((evt.loaded*100)/evt.total).toString())) + '%'
         }).promise();
 
         const url = await s3.getSignedUrl('putObject', params);
 
-        console.log('we are here')
-
         await upload.then(data => {
             console.log('successfully uploaded to S3!', file_key);
         });
-
-        console.log('we are here')
 
         return Promise.resolve({
             file_key,
