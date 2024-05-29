@@ -5,12 +5,21 @@ import { LogIn } from "lucide-react";
 import Image from "next/image";
 import { UserButton } from "@clerk/nextjs";
 import FileUpload from "@/components/FileUpload";
+import { db } from "@/lib/db";
+import { chats } from "@/lib/db/schema";
+import { eq } from "drizzle-orm";
 
 export default async function Home() {
   // Сначала проверяем зарегестрирован ли юзер или нет
   const {userId} = await auth()
   const isAuth = !!userId
-
+  let firstChat;
+  if (userId) {
+    firstChat = await db.select().from(chats).where(eq(chats.userId, userId));
+    if (firstChat) {
+      firstChat = firstChat[0]
+    }
+  }
   return (
     <div className="w-screen min-h-screen bg-gradient-to-r from-blue-400 to-blue-600">
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
@@ -21,7 +30,11 @@ export default async function Home() {
           </div>
           
           <div className="flex mt-2">
-            {isAuth && (<Button>Перейти к чатам</Button>)}
+            {isAuth && firstChat && (
+              <Link href={`/chat/${firstChat.id}`}>
+                <Button>Перейти к чатам</Button>
+              </Link>
+            )}
           </div>
 
           <p className="max-w-xl mt-1 text-lg text-slate-700">

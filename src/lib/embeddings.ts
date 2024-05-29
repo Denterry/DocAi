@@ -7,7 +7,6 @@ const config = new Configuration({
 const openai = new OpenAIApi(config);
 
 export async function getEmbeddings(text: string) {
-  console.log("start embd")
   try {
     if ((text.replace(/\n/g, " ")) == '') {
       return []
@@ -17,7 +16,7 @@ export async function getEmbeddings(text: string) {
       input: text.replace(/\n/g, " "),
     });
     const result = await response.json();
-    console.log("API response:", result);
+    // console.log("API response:", result);
     if (!result.data || result.data.length == 0) {
       console.log("No embeddings returned or incorrect data structure.");
       return [];
