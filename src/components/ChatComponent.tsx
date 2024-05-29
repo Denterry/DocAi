@@ -62,7 +62,7 @@ const ChatComponent = ({ chatId }: Props) => {
             placeholder="Задайте любой вопрос..."
             className="w-full"
           />
-          <Button className="bg-gradient-to-r from-blue-700 to-gray-700 ml-2">
+          <Button className="bg-gradient-to-r from-blue-700 to-gray-600 ml-2">
             <Send className="h-4 w-4" />
           </Button>
         </div>
